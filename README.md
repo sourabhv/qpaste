@@ -1,0 +1,4 @@
+QPaste
+======
+
+A Quick Pastebin
