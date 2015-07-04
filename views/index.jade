@@ -3,7 +3,20 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         title="QPaste - Quick Pasting library"
-        script(src="js/script.js")
-        link(rel="stylesheet", src="css/style.js")
+        link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css")
+        link(rel="stylesheet", href="//fonts.googleapis.com/css?family=Lato|Source+Code+Pro|Bree+Serif")
+        link(rel="stylesheet", href="/css/style.css")
+        script(src="/js/keyboard.min.js")
     body
-        h1 QPaste for #{ext}
+        header
+            h1.left QPaste
+            h2.right About
+            div.clear
+        main
+            textarea#code(placeholder="Your Code Goes Here ..." spellcheck="false" autofocus)
+        footer
+            hr
+            p Press <kbd>Ctrl</kbd> + <kbd>Enter</kbd>  to Paste!
+        script(src="/js/script.js")
+
+

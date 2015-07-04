@@ -19,10 +19,18 @@ app.use(express.static(__dirname + '/public'));
 
 app.set('view engine', 'jade');
 
-app.get('/:ext?', function (req, res) {
-    var ext = req.params.ext || 'Plain Text';
-    console.log('ext:', ext);
-    res.render('index', { ext: ext });
+app.get(/^\/([a-zA-Z]*)\/?$/, function (req, res) {
+    res.render('index');
+});
+
+app.get(/^\/([0-9]+)\/?$/, function (req, res) {
+    var id = req.params['0'];
+    res.render('index', { 'id': id });
+});
+
+app.post(/^\/([a-zA-Z]*)\/?$/, function (req, res) {
+    console.log('code: ', req.body.code, 'ext:', req.params['0']);
+    res.json({ok: 'ok'});
 });
 
 app.get('*', function (req, res) {
