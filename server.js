@@ -28,10 +28,24 @@ app.get(/^\/([0-9]+)\/?$/, function (req, res) {
     var id = req.params['0'];
     Snippet.where({ id: id }).fetch()
         .then(function (data) {
+            if (data === null)
+                res.redirect('/');
             res.render('index', {
+                'id': id,
                 'content': data.attributes.content,
                 'lexer': data.attributes.lexer
             });
+        })
+});
+
+app.get(/^\/([0-9]+)\/raw(?:\.txt)?\/?$/, function (req, res) {
+    var id = req.params['0'];
+    Snippet.where({ id: id }).fetch()
+        .then(function (data) {
+            if (data === null)
+                res.redirect('/');
+            res.header("Content-Type", "text/plain");
+            res.send(data.attributes.content);
         })
 });
 

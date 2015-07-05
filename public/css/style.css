@@ -27,21 +27,6 @@ header h1, header h2 {
     font-size: 40px;
     font-weight: normal;
     line-height: 50px;
-    cursor: pointer;
-}
-header h1 .hidden {
-    display: inline-block;
-    vertical-align: top;
-    overflow: hidden;
-    width: 0;
-    -webkit-transition: width .25s ease-in-out;
-       -moz-transition: width .25s ease-in-out;
-        -ms-transition: width .25s ease-in-out;
-         -o-transition: width .25s ease-in-out;
-            transition: width .25s ease-in-out;
-}
-header h1:hover .hidden {
-    width: 90px;
 }
 
 header h2 {
@@ -49,22 +34,42 @@ header h2 {
     padding-left: 30px;
 }
 
-header h2 .lovebox {
+header h2:hover #lovebox, header h2 #lovebox:hover {
+    display: inline-block;
+}
+
+#lovebox {
     position: absolute;
     display: none;
-    padding: 30px;
+    padding: 80px 30px;
     min-width: 350px;
     top: 0%; right: 100%;
     box-shadow: 0 0 20px rgba(0,0,0,.3);
     background: white;
-    font-family: 'Lato';
-    font-size: 15px;
+    cursor: auto;
+}
+#github-fork img {
+    position: absolute;
+    top: 0; left: 0;
+    border: 0;
+}
+#lovebox p.one {
+    margin: 0;
+    font-size: 20px;
     text-shadow: none;
     color: #999;
 }
-
-header h2:hover .lovebox, header h2 .lovebox:hover {
-    display: inline-block;
+#dropbox {
+    padding: 10px;
+}
+#lovebox p.tip, #lovebox p.example {
+    margin-top: 30px;
+    font-size: 13px;
+    text-shadow: none;
+    line-height: 18px;
+}
+#lovebox p.example {
+    margin-top: 10px;
 }
 
 #snippet-url {
@@ -89,11 +94,11 @@ header h2:hover .lovebox, header h2 .lovebox:hover {
 
 #code-display {
     margin-top: 30px;
+    margin-bottom: 34px;
     padding: 10px;
-    width: 100%;
-    height: 400px;
-
+    width: 100%; height: 400px;
     box-shadow: 0 0 20px rgba(0,0,0,.3);
+    overflow-y: scroll;
     font-family: 'Source Code Pro', Courier, monospace;
     font-size: 14px;
     background: #fAfAfA;
@@ -119,6 +124,10 @@ header h2:hover .lovebox, header h2 .lovebox:hover {
     color: #444;
 }
 
+footer {
+    text-align: center;
+}
+
 hr {
     margin: 30px 0;
     height: 2px;
@@ -138,6 +147,17 @@ p {
 
 .instruction {
     font-size: 30px;
+}
+
+.new-paste {
+    margin: 10px auto;
+    padding: 0 20px;
+    font-family: 'Bree Serif', 'Lato', Garamond, serif;
+    font-size: 30px;
+    text-align: center;
+    text-shadow: 1px 2px 4px #ddd;
+    text-decoration: none;
+    color: #c8c8c8;
 }
 
 .info {
