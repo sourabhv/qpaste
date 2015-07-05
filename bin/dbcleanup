@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+var snippet = require('../snippet');
+snippet.raw("DELETE FROM snippets where created < NOW() - INTERVAL '7 days';").then(function (data) {
+    console.log('Scheduled Database Clean up: Deleted', data.rowCount, 'rows');
+    process.exit();
+}).error(function (error) {
+    console.log('Scheduled Database Clean up: Error: ', error.message);
+    process.exit();
+});

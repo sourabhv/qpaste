@@ -1,4 +1,5 @@
-var config = require('./config')
+var config = require('./config');
+var Snippet = require('./snippet');
 
 var path = require('path');
 var express = require('express');
@@ -15,7 +16,7 @@ app.use(function (req, res, next) {
     next();
 });
 app.use(morgan('dev'));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, '/public')));
 
 app.set('view engine', 'jade');
 
@@ -25,12 +26,29 @@ app.get(/^\/([a-zA-Z]*)\/?$/, function (req, res) {
 
 app.get(/^\/([0-9]+)\/?$/, function (req, res) {
     var id = req.params['0'];
-    res.render('index', { 'id': id });
+    Snippet.where({ id: id }).fetch()
+        .then(function (data) {
+            res.render('index', {
+                'content': data.attributes.content,
+                'lexer': data.attributes.lexer
+            });
+        })
 });
 
 app.post(/^\/([a-zA-Z]*)\/?$/, function (req, res) {
-    console.log('code: ', req.body.code, 'ext:', req.params['0']);
-    res.json({ok: 'ok'});
+    var content = req.body.code;
+    var lexer = req.params['0'];
+    new Snippet({
+        content: content,
+        lexer: lexer
+    }).save().then(function (data) {
+            if (data !== null)
+                res.status(200).json({ success: true, id: data.id });
+            else
+                res.status(200).json({ success: false });
+        }).error(function (error) {
+            res.status(503).json({ success: false, message: 'Something went wrong' });
+        });
 });
 
 app.get('*', function (req, res) {

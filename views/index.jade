@@ -9,14 +9,21 @@ html(lang="en")
         script(src="/js/keyboard.min.js")
     body
         header
-            h1.left QPaste
-            h2.right About
-            div.clear
+            h1.left Q<span class="hidden">uick&nbsp;</span>Paste
+            h2.right &#10084;
+                div.lovebox Hi! Welcome to QPaste
+            textarea#snippet-url(rows=1, spellcheck="false", readonly, style="display:none")
+            .clear
         main
-            textarea#code(placeholder="Your Code Goes Here ..." spellcheck="false" autofocus)
+            - if (typeof(content) !== 'undefined') {
+                div#code-display #{content}
+            - } else {
+                textarea#code-edit(placeholder="Your Code Goes Here ...", spellcheck="false", autofocus)
+            - }
         footer
             hr
-            p Press <kbd>Ctrl</kbd> + <kbd>Enter</kbd>  to Paste!
+            p.instruction Press <kbd>Ctrl</kbd> + <kbd>Enter</kbd>  to Paste!
+            p.info All pastes expire in 1 week
         script(src="/js/script.js")
 
 

@@ -1,0 +1,6 @@
+CREATE TABLE snippets(
+    id SERIAL PRIMARY KEY,
+    content TEXT NOT NULL,
+    lexer TEXT NOT NULL,
+    created TIMESTAMP NOT NULL DEFAULT NOW(),
+    view_count BIGINT NOT NULL DEFAULT 0);
