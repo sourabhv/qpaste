@@ -1,4 +1,4 @@
-QPaste
+Snippt
 ======
 
 A Quick Pastebin

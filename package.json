@@ -1,5 +1,5 @@
 {
-  "name": "qpaste",
+  "name": "snippt",
   "version": "0.0.1",
   "description": "Quick pastebin",
   "main": "server.js",
@@ -8,20 +8,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sourabhv/qpaste.git"
+    "url": "git+https://github.com/sourabhv/snippt.git"
   },
   "keywords": [
     "paste",
     "pastebin",
     "snippet",
-    "qpaste"
+    "snippt"
   ],
   "author": "Sourabh Verma <sourabh.coder@gmail.com> (htt://psycoder.me)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sourabhv/qpaste/issues"
+    "url": "https://github.com/sourabhv/snippt/issues"
   },
-  "homepage": "https://github.com/sourabhv/qpaste#readme",
+  "homepage": "https://github.com/sourabhv/snippt#readme",
   "dependencies": {
     "body-parser": "^1.12.4",
     "bookshelf": "^0.8.1",
